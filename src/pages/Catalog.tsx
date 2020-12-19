@@ -7,7 +7,7 @@ const Catalog: React.FC = () =>{
     return(
 
         <View>
-            <Text> Welcome to catalog</Text>
+            <Text> Welcome catalog</Text>
         </View>
 
     );
