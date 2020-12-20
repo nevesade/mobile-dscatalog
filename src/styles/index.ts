@@ -121,9 +121,13 @@ const theme = StyleSheet.create({
     priceContainer: {
         flexDirection: "row",
         marginTop: 10,
-        
-    
 
+    },
+
+    productImg: {
+        width: 140,
+        height: 140,
+        margin: 16,
     },
 
     //SearchInput
@@ -198,6 +202,8 @@ const text = StyleSheet.create({
         fontWeight: "bold",
 
     },
+
+   
 });
 
 

@@ -16,7 +16,7 @@ const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price }) => {
     return (
 
         <TouchableOpacity style={theme.productCard}>
-            <Image source={imgUrl} />
+            <Image source={{ uri: imgUrl }} style={theme.productImg} />
             <View style={theme.produtDescription}>
                 <Text style={text.productName}>{name}</Text>
 
