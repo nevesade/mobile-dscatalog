@@ -35,7 +35,7 @@ const theme = StyleSheet.create({
         height: '100%',
         backgroundColor: colors.white,
         borderRadius: 20,
-        alignItems: "center",
+        
         shadowColor: colors.black,
         shadowOffset: {
             width: 0,
@@ -43,6 +43,7 @@ const theme = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
+        justifyContent: "space-around",
 
 
 
@@ -55,15 +56,56 @@ const theme = StyleSheet.create({
 
 
     textContainer: {
+        paddingHorizontal: 20,
 
+    },
+
+    primaryButtom: {
+        backgroundColor: colors.primary,
+        width: 290,
+        height: 50,
+        borderRadius: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginLeft: 43,
+        
+
+    },
+    arrowContainer:{
+        backgroundColor: colors.secondary,
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        height: 50,
+        width: 50,
     },
 
 });
 
 
 const text = StyleSheet.create({
-    regular: {},
-    bold: {},
+    regular: {
+        fontWeight: "400",
+        fontSize: 16,
+        textAlign:  "center",
+        color: colors.mediumGray,
+    },
+    bold: {
+        fontWeight: "bold",
+        fontSize: 26,
+        textAlign: "center",
+        marginBottom: 15,
+        color: colors.darkGray,
+    },
+    primaryTet: {
+        textTransform: "uppercase",
+        fontSize: 14,
+        fontWeight: "bold",
+        color: colors.white,
+        marginLeft: 20,
+    },
 });
 
 
