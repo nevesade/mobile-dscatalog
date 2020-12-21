@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../services';
 import { theme, text } from "../styles";
 import arrow from '../assets/leftArrow.png';
+import { useNavigation } from "@react-navigation/native";
 
 
 const ProductDetails = ({
@@ -12,6 +13,8 @@ const ProductDetails = ({
     },
 
 }) => {
+
+    const navigation = useNavigation();
 
     const [product, setProduct] = useState({
         id: null,
@@ -39,38 +42,38 @@ const ProductDetails = ({
     }, []);
 
     return (
-        <View>
+        <View style={theme.detailsContainer}>
 
             {
                 loading ? (<ActivityIndicator size="large" color="#407BFF" />) : (
 
-                    <View>
+                    <View style={theme.detailCard}>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity style={theme.goBackContainer}  onPress={() => navigation.goBack()}>
                             <Image source={arrow} />
-                            <Text>Voltar</Text>
+                            <Text style={text.goBackText}>Voltar</Text>
 
                         </TouchableOpacity>
 
-                        <View>
+                        <View style={theme.produtImageContainer}>
 
 
                             <Image
                                 source={{ uri: product.imgUrl }}
-                                style={{ width: 150, height: 150 }}
+                                style={ theme.productImage}
                             />
 
                         </View>
 
-                        <Text>{product.name}</Text>
-                        <View>
-                            <Text>R$</Text>
-                            <Text>{product.price}</Text>
+                        <Text style={text.productDetailsName}>{product.name}</Text>
+                        <View style={theme.priceContainer}>
+                            <Text style={text.currency}>R$</Text>
+                            <Text style={text.productPrice}>{product.price}</Text>
 
 
                         </View>
-                        <ScrollView>
-                            <Text>
+                        <ScrollView style={theme.scrollTextContainer}>
+                            <Text style={text.productDescription} >
                                 {product.description}
                             </Text>
                         </ScrollView>
