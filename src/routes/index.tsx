@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 
 const Stack = createStackNavigator();
 
-import {Home, Catalog} from '../pages'
+import {Home, Catalog,  ProductDetails} from '../pages'
 
 const Routes: React.FC = () =>{
     
@@ -11,10 +11,10 @@ const Routes: React.FC = () =>{
 
         <Stack.Navigator>
 
-            <Stack.Screen 
-           
-            name="Home" component={Home} />
+            <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Catalog" component={Catalog} />
+            <Stack.Screen name="ProductDetails" component={ProductDetails} />
+
             
 
         </Stack.Navigator>
