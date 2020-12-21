@@ -1,4 +1,4 @@
-import {ProgressBarAndroidComponent, StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions} from  "react-native";
 
 
 const deviceWidth = Dimensions.get('window').width;
@@ -302,6 +302,8 @@ const text = StyleSheet.create({
 });
 
 
+//Navigation
+
 const nav = StyleSheet.create({
     leftText: {
         color: colors.white,
@@ -329,6 +331,16 @@ const nav = StyleSheet.create({
     option: {
         paddingVertical: 5, 
 
+    },
+
+    textOption: {
+
+        color: colors.white,
+        textTransform: "uppercase",
+    },
+
+    textActive: {
+        fontWeight: "bold",
     },
 
 

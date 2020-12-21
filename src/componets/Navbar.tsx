@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import {useNavigation, useRoute }  from "@react-navigation/native";
-import { TouchableOpacity, Image, View, Text } from 'react-native';
+import React, { useState } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import {  Image, View, Text } from "react-native";
 import menu from "../assets/menu.png";
 import { nav } from "../styles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
@@ -14,13 +15,13 @@ const Navbar: React.FC = () => {
 
 
 
-    function navigate(path : any ){
-        if(path) {
+    function navigate(path: any) {
+        if (path) {
             setShow(false);
             navigation.navigate(path);
         }
         setShow(false);
-    }
+    };
 
     return (
         <TouchableOpacity activeOpacity={0.8} style={nav.drawer} onPress={() => setShow(!show)} >
@@ -30,15 +31,17 @@ const Navbar: React.FC = () => {
 
                     <View style={nav.options} >
 
-                        <TouchableOpacity>
-                            <Text>Home</Text>
 
+
+                        <TouchableOpacity style={nav.option} onPress={() => navigate("Home")}>
+                            <Text style={[nav.textOption, route.name === "Home" ? nav.textActive : null]}> Home</Text>
+
+                        </TouchableOpacity >
+                        <TouchableOpacity style={nav.option} onPress={() => navigate("Catalog")} >
+                            <Text style={[nav.textOption, route.name === "Catalog" ? nav.textActive : null]}>Catalog</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text>Catalog</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text>ADM</Text>
+                        <TouchableOpacity style={nav.option}>
+                            <Text style={[nav.textOption, route.name === "ADM" ? nav.textActive : null]}>ADM</Text>
                         </TouchableOpacity>
 
                     </View>) : null
