@@ -48,6 +48,7 @@ const theme = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         justifyContent: "space-around",
+        alignItems: "center",
 
 
 
@@ -246,7 +247,7 @@ const text = StyleSheet.create({
         marginBottom: 15,
         color: colors.darkGray,
     },
-    primaryTet: {
+    primaryText: {
         textTransform: "uppercase",
         fontSize: 14,
         fontWeight: "bold",

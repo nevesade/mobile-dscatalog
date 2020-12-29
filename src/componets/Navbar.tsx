@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
                         <TouchableOpacity style={nav.option} onPress={() => navigate("Catalog")} >
                             <Text style={[nav.textOption, route.name === "Catalog" ? nav.textActive : null]}>Catalog</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={nav.option}>
+                        <TouchableOpacity style={nav.option}  onPress={() => navigate("Login")}>
                             <Text style={[nav.textOption, route.name === "ADM" ? nav.textActive : null]}>ADM</Text>
                         </TouchableOpacity>
 

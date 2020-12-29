@@ -4,6 +4,7 @@ import { Text} from 'react-native';
 import {Home, Catalog,  ProductDetails} from '../pages';
 import {Navbar } from  '../componets';
 import { colors, nav } from '../styles';
+import Login from '../pages/Login';
 
 
 const Stack = createStackNavigator();
@@ -37,6 +38,8 @@ const Routes: React.FC = () =>{
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Catalog" component={Catalog} />
             <Stack.Screen name="ProductDetails" component={ProductDetails} />
+            <Stack.Screen name="Login" component={Login} />
+
 
             
 
