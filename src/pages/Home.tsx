@@ -28,7 +28,7 @@ const Home: React.FC = () => {
                 activeOpacity={0.8}
                 onPress={() => navigation.navigate("Catalog")}
                 >
-                    <Text style={text.primaryTet}> INICIE AGORA A SUA BUSCA</Text>
+                    <Text style={text.primaryText}> INICIE AGORA A SUA BUSCA</Text>
                     <View style={theme.arrowContainer}>
                         <Image source={arrow} />
                     </View>

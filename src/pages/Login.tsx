@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
 import { text, theme } from "../styles";
 
 import eyesOpened from "../assets/eyes-opened.png";
 import eyesClosed from "../assets/eyes-closed.png";
 import arrow from "../assets/arrow.png";
+import { isAuthenticated, login } from '../services/auth';
 
 const Login: React.FC = () => {
 
     const [hidePassword, setHidePassword] = useState(true);
-    const [userInfo, setUserInfo] = useState(
+    const [userInfo, setUserInfo] = useState({ username: "", password: "" });
 
-        {
-            username: "",
-            password: ""
-        }
+    useEffect(() => {
 
-    );
+        isAuthenticated();
+
+    }, []);
 
     async function handleLogin() {
 
-        console.log("Fazer login");
 
-    }
+        const data = await login(userInfo);
+        console.warn(data);
+
+
+
+    };
 
     return (
         <View style={theme.container}>
-            <View style={theme.card}>
-                <Text >Login</Text>
+            <View style={theme.loginCard}>
+                <Text style={text.loginTitle}>Login</Text>
                 <View style={theme.form}>
                     <TextInput
                         placeholder="Email"
@@ -61,36 +65,36 @@ const Login: React.FC = () => {
                                 }
                             }
                         />
-                        <TouchableOpacity style={theme.toogle} onPress={() => setHidePassword(!hidePassword)}>
+                        <TouchableOpacity style={theme.toggle} onPress={() => setHidePassword(!hidePassword)}>
                             <Image source={hidePassword ? eyesOpened : eyesClosed} style={theme.eyes} />
                         </TouchableOpacity>
 
                     </View>
 
 
+                    <TouchableOpacity
+                        style={theme.primaryButtom}
+                        activeOpacity={0.8}
+                        onPress={() => handleLogin}
 
+
+                    >
+
+                        <View style={theme.buttonTextContainer}>
+                            <Text style={text.primaryText}>Fazer Login</Text>
+                        </View>
+                        <View style={theme.arrowContainer}>
+                            <Image source={arrow} />
+
+                        </View>
+
+
+
+                    </TouchableOpacity>
 
                 </View>
 
-                <TouchableOpacity
-                    style={theme.primaryButtom}
-                    activeOpacity={0.8}
-                    onPress={() => handleLogin}
 
-
-                >
-
-                    <View style={theme.buttonTextContainer}>
-                        <Text style={text.primaryText}>Fazer Login</Text>
-                    </View>
-                    <View style={theme.arrowContainer}>
-                        <Image source={arrow} />
-
-                    </View>
-
-
-
-                </TouchableOpacity>
             </View>
 
         </View>

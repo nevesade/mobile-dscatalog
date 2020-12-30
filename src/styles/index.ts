@@ -73,7 +73,7 @@ const theme = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginLeft: 43,
+        
         
 
     },
@@ -228,6 +228,60 @@ const theme = StyleSheet.create({
     },
    
 
+    //Loginpage
+
+    loginCard: {
+
+        width: '100%',
+        height: '100%',
+        backgroundColor: colors.white,
+        borderRadius: 20,
+        
+        shadowColor: colors.black,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        justifyContent: "center",
+        alignItems: "center",
+
+
+    },
+
+    form: {
+        marginVertical: 10,
+
+    },
+
+
+    passwordContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: 25,
+
+
+    },
+
+    textInput: {
+        width: 290,
+        height: 50,
+        borderWidth: 1,
+        borderColor: colors.mediumGray,
+        borderRadius: 10,
+        padding: 10, 
+
+    },
+
+    toggle: {
+
+        margin:  -40,
+    },
+
+
+
+
     
 
 });
@@ -297,6 +351,17 @@ const text = StyleSheet.create({
         fontSize: 16,
         fontWeight: "400",
         color: colors.mediumGray,
+    },
+
+    
+    loginTitle: {
+
+        fontSize: 30,
+        color: colors.darkGray,
+        textTransform: "uppercase",
+        marginBottom: 50,
+    
+
     },
 
    
