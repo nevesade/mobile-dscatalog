@@ -9,10 +9,11 @@ interface Productprops {
     name: String;
     imgUrl: ImageSourcePropType;
     price: Number;
+    role?: string;
 }
 
-
-const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price }) => {
+const UseCArd= '';
+const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price, role }) => {
 
     const navigation = useNavigation();
 
@@ -27,8 +28,23 @@ const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price }) => {
                     <Text style={text.currency}>R$</Text>
                     <Text style={text.productPrice}>{price}</Text>
                 </View>
+                
+                {
+                role === 'admin' && (
+                    <View style={theme.buttonContainer}>
+                        <TouchableOpacity style={theme.deleteBtn}>
+                            <Text style={text.deleteText}>Excluir</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={theme.editBtn}>
+                            <Text style={text.editText}>Editar</Text>
+                        </TouchableOpacity>
+                    </View>
+                )
+            }
 
             </View>
+
+            
 
 
         </TouchableOpacity>
