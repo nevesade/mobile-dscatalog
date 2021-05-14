@@ -12,7 +12,7 @@ interface Productprops {
     role?: string;
 }
 
-const UseCArd= '';
+
 const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price, role }) => {
 
     const navigation = useNavigation();
