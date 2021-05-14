@@ -15,7 +15,7 @@ export async function login(userInfo: AuthProps) {
 
     const data = queryString.stringify({...userInfo, grant_type: "password"});
 
-    const result = await api.post("oauth/token", data, {
+    const result = await api.post("/oauth/token", data, {
 
         headers: {
 
@@ -56,7 +56,8 @@ export async function isAuthenticated() {
 
         const token = await AsyncStorage.getItem("@token");
 
-        token ? console.warn("Logado")  :   console.warn("Deslogado");
+        //token ? console.warn("Logado")  :   console.warn("Deslogado");
+        return token ? true : false;
 
     }
     catch(e){
@@ -65,4 +66,14 @@ export async function isAuthenticated() {
 
     }
     
+}
+
+export async function doLogout() {
+    
+    try {
+        AsyncStorage.removeItem("@token");
+        
+    } catch (e) {
+        console.warn(e);
+    }
 }
