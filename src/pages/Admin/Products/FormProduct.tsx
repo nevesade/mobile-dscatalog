@@ -1,10 +1,17 @@
 import React,  {useState}  from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image, Modal, TextInput, ActivityIndicator } from 'react-native';
 
-import arrow from "../../../assets/arrow.png";
+import arrow from "../../../assets/leftArrow.png";
+import { theme, text } from "../../../styles";
 
 
-const FormProduct = () => {
+interface FormProductProps {
+    setScreen: Function;
+}
+
+const FormProduct: React.FC<FormProductProps> =   (props) => {
+
+     const {setScreen } = props;
 
     const [loading, setLoading ] = useState(false);
     const [edit, setEdit ] = useState(false);
@@ -36,29 +43,41 @@ const FormProduct = () => {
         decription: null, 
         imgUrl: null,  
         price: null, 
-        categoies: null, 
+        categories: null, 
     });
 
 
 
     return (
-        <View>
+        <View style={theme.formContainer}>
             {
                 loading ? ( <ActivityIndicator size="large" /> 
                 ) : (
-                    <View>
+                    <View style={theme.formCard}>
+                        <ScrollView>
+
+                      
+
                         <Modal 
                         visible={showCategories} 
                         animationType="fade" 
                         transparent={true}
                         presentationStyle={"overFullScreen"}
                         >
-                            <View>
-                                <ScrollView>
+                            <View style={theme.modalContainer} >
+                                <ScrollView contentContainerStyle={theme.modalContent}>
                                     {
                                         categories.map(
                                             (cat) => (
-                                                <TouchableOpacity key={categories.id} >
+                                                <TouchableOpacity
+                                                style={theme.modalItem}
+                                                 key={cat.id}  
+                                                onPress={() => {
+                                                setProduct({ ...product, categories: cat.name} );
+                                                setShowCategories(!showCategories);
+                                                 }}
+
+                                                >
                                                     <Text> {cat.name}</Text>
                                                 </TouchableOpacity>
                                             )
@@ -68,10 +87,47 @@ const FormProduct = () => {
 
                             </View>
                         </Modal>
-                        <TouchableOpacity>
-                            <Image source={arrow}/>
-                            <Text>Voltar</Text>
+
+                        <TouchableOpacity 
+                            onPress={() => setScreen("products")}
+                            style={theme.goBackContainer}
+                        >
+                            <Image source={arrow} />
+                            <Text style={text.goBackText} >Voltar</Text>
                         </TouchableOpacity>
+                        <TextInput  placeholder="Nome do produto"  style={theme.formInput} />
+                        <TouchableOpacity onPress={() => setShowCategories(!showCategories)} >
+                            <Text>
+                                {
+                                    product.categories === null ? 'Escolha uma categoria' 
+                                    : product.categories
+                                }
+                            </Text>
+                        </TouchableOpacity>
+                        <TextInput placeholder="Preço" style={theme.formInput} />
+                        <TouchableOpacity>
+                            <Text>Carregar Imagem</Text>
+                        </TouchableOpacity>
+                        <Text>
+                            As imagens devem ser  JPG ou PNG e não devem ultrapassar 5 mb.
+                        </Text>
+                        <TextInput multiline placeholder="Descrição"  style={theme.textArea}/>
+
+                        <View>
+                            <TouchableOpacity>
+                                <Text>
+                                    Cancelar
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity>
+                                <Text>
+                                    Salvar
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        </ScrollView>
+
                     </View>
 
                 )
