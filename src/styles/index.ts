@@ -283,7 +283,8 @@ const theme = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        width: 290,
     },
 
 
@@ -391,19 +392,55 @@ const theme = StyleSheet.create({
     },
     
     textArea: {
-        width: "100%",
+        width: 290,
         height: 200,
         borderWidth: 1,
         borderColor: colors.mediumGray,
         borderRadius: 10,
+        //paddingBottom: 170,
         padding: 10,
         marginVertical: 15,
-
-
+       
+    
     },
 
+    selectInput: {
+        width: 290,
+        height: 50,
+        borderWidth: 1,
+        borderColor: colors.mediumGray,
+        borderRadius: 10,
+        padding: 10, 
+        justifyContent:"center",
+        color: "black",
 
 
+    }, 
+
+    textCategoria: {
+
+        color: "red",
+    },
+
+    uploadBtn: {
+        width: 290,
+        height: 40,
+        backgroundColor: colors.mediumGray,
+        borderRadius: 5, 
+        alignItems: "center",
+        justifyContent: "center",
+
+    },
+    saveBtn: {
+        width: "48%",
+        height: 40,     
+        backgroundColor: colors.primary,
+        marginVertical: 10,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 10,
+
+    },
 
     
 
@@ -511,12 +548,37 @@ const text = StyleSheet.create({
         fontWeight: "bold",
         color: colors.mediumGray,
 
-    }
+    },
+
+    saveText: {
+        textTransform: "uppercase",
+        fontWeight: "bold",
+        color: colors.white,
+    
+    },
+
+
+    uploadText: {
+        color: colors.white,
+        textTransform: "uppercase",
+        fontWeight: "bold",
+        
 
 
 
+    },
 
+    fileSize: {
+        color: colors.primary,
+        fontSize: 10,
+        fontWeight: "300",
+        marginVertical: 5, 
+        padding: 2,
+        width: 290,
 
+    },
+
+ 
    
 });
 
