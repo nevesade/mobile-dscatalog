@@ -16,4 +16,10 @@ export  function getProducts() {
         );
         
     return res;
+};
+
+export function getCategories() {
+    const res = api.get(`/categories?direction=ASC&orderBy=name`);
+
+    return res;
 }
