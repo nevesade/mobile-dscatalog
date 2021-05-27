@@ -2,9 +2,9 @@ import React,  {useEffect, useState}  from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image, Modal, TextInput, ActivityIndicator, Alert } from 'react-native';
 
 import arrow from "../../../assets/leftArrow.png";
-import { getCategories } from "../../../services";
+import { createProduct, getCategories } from "../../../services";
 import { theme, text } from "../../../styles";
-
+import Toast from 'react-native-tiny-toast';
 
 interface FormProductProps {
     setScreen: Function;
@@ -24,7 +24,7 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
         !edit && newProduct();
     }
     
-    async function newProduct(){
+    async function newProduct() {
 
         setLoading(true);
         const cat = replaceCategory();
@@ -33,10 +33,21 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
             categories: [
                 {
                     id: cat,
-                }
-            ]
+                },
+            ],
+        };
+        try {
+            await createProduct(data);
+            //console.warn("produto salvo");
+            Toast.showSuccess("Produto criado com sucesso1")
+
+        } catch (res) {
+            //console.warn("erro ao salvar");
+            //console.warn(data);
+            Toast.show("Erro ao salvar...");
         }
-        console.warn(data);
+        setLoading(false);
+        
     }
 
     function replaceCategory() {
@@ -65,7 +76,7 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
     const [ showCategories, setShowCategories] = useState(false);
     const [product, setProduct ] = useState({
         name: "",
-        decription: "", 
+        description: "", 
         imgUrl: "",  
         price: 0, 
         categories: [], 
@@ -156,8 +167,8 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
                             multiline 
                             placeholder="Descrição"  
                             style={theme.textArea}
-                            value={product.decription}
-                            onChangeText={(e) => setProduct({...product, decription: e}) }
+                            value={product.description}
+                            onChangeText={(e) => setProduct({...product, description: e}) }
                             />
 
                         <View style={theme.buttonContainer}>
