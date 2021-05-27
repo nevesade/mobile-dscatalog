@@ -5,6 +5,7 @@ import arrow from "../../../assets/leftArrow.png";
 import { createProduct, getCategories } from "../../../services";
 import { theme, text } from "../../../styles";
 import Toast from 'react-native-tiny-toast';
+import {TextInputMask} from 'react-native-masked-text';
 
 interface FormProductProps {
     setScreen: Function;
@@ -30,6 +31,7 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
         const cat = replaceCategory();
         const data = {
             ...product,
+            price: getRaw(),
             categories: [
                 {
                     id: cat,
@@ -68,6 +70,15 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
         setLoading(false);
     }
 
+    function getRaw() {
+
+        const str = product.price;
+
+        const res = str.slice(2).replace(/\./g, "").replace(/,/g, ".");
+        return res;
+    }
+
+
     useEffect(() => {
        
         loadCategories();
@@ -78,7 +89,7 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
         name: "",
         description: "", 
         imgUrl: "",  
-        price: 0, 
+        price: "", 
         categories: [], 
     });
 
@@ -151,12 +162,22 @@ const FormProduct: React.FC<FormProductProps> =   (props) => {
                                 }
                             </Text>
                         </TouchableOpacity>
-                        <TextInput 
+                        {/*<TextInput 
                             placeholder="Preço" 
                             style={theme.formInput} 
                             value={product.price}
                             onChangeText={(e) => setProduct({...product, price: parseInt(e)}) }
-                            />
+                        />*/}
+
+                        <TextInputMask
+                            type={"money"}
+                            placeholder="Preço"
+                            style={theme.formInput} 
+                            value={product.price}
+                            onChangeText={(e) => setProduct({...product, price: e}) }
+
+                        />
+
                         <TouchableOpacity activeOpacity={0.8} style={theme.uploadBtn}>
                             <Text style={text.uploadText}>Carregar Imagem</Text>
                         </TouchableOpacity>

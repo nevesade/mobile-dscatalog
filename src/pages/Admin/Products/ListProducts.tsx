@@ -70,15 +70,20 @@ const Products: React.FC<ProductProps> = (props) => {
 
                 <ActivityIndicator size="large" color="#407BFF"  />
 
-                ) : 
-                (data.map((product) => (
-                    <ProductCard 
-                    {...product} 
-                    key={product.id} 
-                    role="admin" 
-                    handleDelete={handleDelete}/>
-                )))
-            }
+                ) : (
+                    data.map((product) => {
+                        const {id} = product;
+                        return(
+                            
+                        <ProductCard 
+                        {...product} 
+                        key={id} 
+                        role="admin" 
+                        handleDelete={handleDelete}
+                        />
+                     )})
+
+                 )}
 
         </ScrollView>
     )
