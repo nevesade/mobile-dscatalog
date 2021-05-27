@@ -7,19 +7,31 @@ import {useNavigation} from '@react-navigation/native';
 interface Productprops {
     id: Number;
     name: String;
-    imgUrl: ImageSourcePropType;
+    imgUrl: string;
     price: Number;
     role?: string;
+    handleDelete: Function;
 }
 
 
-const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price, role }) => {
+const ProductCard: React.FC<Productprops> = ({ 
+    id, 
+    name, 
+    imgUrl, 
+    price, 
+    role, 
+    handleDelete,
+}) => {
 
     const navigation = useNavigation();
 
     return (
 
-        <TouchableOpacity style={theme.productCard} onPress={() => navigation.navigate("ProductDetails", {id})}>
+        <TouchableOpacity 
+            style={theme.productCard} 
+            onPress={() =>
+             role? "" : navigation.navigate("ProductDetails", {id})}
+             >
             <Image source={{ uri: imgUrl }} style={theme.productImg} />
             <View style={theme.produtDescription}>
                 <Text style={text.productName}>{name}</Text>
@@ -32,7 +44,7 @@ const ProductCard: React.FC<Productprops> = ({ id, name, imgUrl, price, role }) 
                 {
                 role === 'admin' && (
                     <View style={theme.buttonContainer}>
-                        <TouchableOpacity style={theme.deleteBtn}>
+                        <TouchableOpacity style={theme.deleteBtn} onPress={() => handleDelete(id)}>
                             <Text style={text.deleteText}>Excluir</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={theme.editBtn}>

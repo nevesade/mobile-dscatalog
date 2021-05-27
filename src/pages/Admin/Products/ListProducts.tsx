@@ -1,7 +1,7 @@
 import React,  {useState, useEffect} from "react";
-import { View,Text, ScrollView, TouchableOpacity, ActivityIndicator } from "react-native";
+import { Text, ScrollView, TouchableOpacity, ActivityIndicator } from "react-native";
 import {SearchInput, ProductCard } from '../../../componets';
-import {getProducts} from '../../../services';
+import {deleteProduct, getProducts} from '../../../services';
 
 
 import { admin } from '../../../styles';
@@ -18,6 +18,12 @@ const Products: React.FC<ProductProps> = (props) => {
     const [loading, setLoading] =  useState(false);
     
     const { setScreen } = props;
+
+    async function handleDelete(id:number) {
+        setLoading(true);
+        const res =  await deleteProduct(id);
+        fillProducts();
+    }
 
     async function fillProducts() {
         setLoading(true);
@@ -66,7 +72,11 @@ const Products: React.FC<ProductProps> = (props) => {
 
                 ) : 
                 (data.map((product) => (
-                    <ProductCard {...product} key={product.id} role="admin"/>
+                    <ProductCard 
+                    {...product} 
+                    key={product.id} 
+                    role="admin" 
+                    handleDelete={handleDelete}/>
                 )))
             }
 

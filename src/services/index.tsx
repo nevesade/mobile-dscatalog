@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { userToken } from './auth';
 
+import AsyncStorage from  '@react-native-async-storage/async-storage';
 
 
 export const api = axios.create(
@@ -10,6 +10,16 @@ export const api = axios.create(
 );
 
 export const TOKEN =  "Basic ZHNjYXRhbG9nOmRzY2F0YWxvZzEyMw==";
+
+//Backend  Requests
+
+
+export async function userToken() {
+    
+    const token = await AsyncStorage.getItem("@token");
+
+    return token;
+}
 
 export  function getProducts() {
     const res = api.get(
@@ -24,13 +34,28 @@ export  async function createProduct(data: object){
 
     const authToken = await userToken();
     const res = api.post(`/products`, data,  {
-        
+
         headers: {
             Authorization: `Bearer ${authToken}`,
         },
     });
 
     return res;
+}
+
+export async function deleteProduct(id: number) {
+
+    const authToken = await userToken();
+
+    const res = api.delete(`/products/${id}`, {
+        
+        headers: {
+            Authorization: `Bearer ${authToken}`,
+        },
+
+    });
+
+    
 }
 
 export function getCategories() {
