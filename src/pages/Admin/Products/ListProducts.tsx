@@ -9,6 +9,7 @@ import { admin } from '../../../styles';
 
 interface ProductProps {
     setScreen: Function;
+    setProductId: Function;
 }
 
 const Products: React.FC<ProductProps> = (props) => {
@@ -17,8 +18,14 @@ const Products: React.FC<ProductProps> = (props) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] =  useState(false);
     
-    const { setScreen } = props;
+    const { setScreen, setProductId } = props;
 
+
+
+    function handleEdit(id: number) {
+        setProductId(id);
+        setScreen("editProduct");
+    }
     async function handleDelete(id:number) {
         setLoading(true);
         const res =  await deleteProduct(id);
@@ -80,6 +87,7 @@ const Products: React.FC<ProductProps> = (props) => {
                         key={id} 
                         role="admin" 
                         handleDelete={handleDelete}
+                        handleEdit={handleEdit}
                         />
                      )})
 

@@ -11,6 +11,7 @@ interface Productprops {
     price: string;
     role?: string;
     handleDelete: Function;
+    handleEdit: Function;
 }
 
 
@@ -21,6 +22,7 @@ const ProductCard: React.FC<Productprops> = ({
     price, 
     role, 
     handleDelete,
+    handleEdit,
 }) => {
 
     const navigation = useNavigation();
@@ -62,10 +64,16 @@ const ProductCard: React.FC<Productprops> = ({
                 {
                 role === 'admin' && (
                     <View style={theme.buttonContainer}>
-                        <TouchableOpacity style={theme.deleteBtn} onPress={() => handleDelete(id)}>
+                        <TouchableOpacity 
+                            style={theme.deleteBtn}
+                            onPress={() => handleDelete(id)}
+                        >
                             <Text style={text.deleteText}>Excluir</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={theme.editBtn}>
+                        <TouchableOpacity 
+                            style={theme.editBtn}
+                            onPress={() =>  handleEdit(id)}
+                            >
                             <Text style={text.editText}>Editar</Text>
                         </TouchableOpacity>
                     </View>
