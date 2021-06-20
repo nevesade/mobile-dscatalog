@@ -17,12 +17,16 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.nevesade",
+      "builderNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.nevesade",
+      "ersionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#407BFF"
       },
       "package": "com.nevesade.init"
     },
